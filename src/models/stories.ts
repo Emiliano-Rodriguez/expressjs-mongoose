@@ -17,4 +17,4 @@ const StoriesSchema = new Schema({
 
 const StoriesModel = model<IStories>("Stories", StoriesSchema);
 
-export { CountryStories, IStories };
+export { StoriesModel, IStories };
