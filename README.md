@@ -19,6 +19,7 @@ This example starts an [ExpressJS](https://expressjs.com/) server that connects 
 - Express
 - TypeScript
 - MongoDB with Mongoose
+- --------------------
 
 ## 💁‍♀️ How to use
 
