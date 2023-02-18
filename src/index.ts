@@ -15,6 +15,7 @@ app.get("/", async (req, res) => {
 });
 
 app.use("/stories", storiesRoutes);
+app.use("/countries", countryRoutes);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
