@@ -9,15 +9,15 @@ interface IStories extends Document {
 
 const StoriesSchema = new Schema({
   title: {
-    type: string,
+    type: String,
     unique: true,
   },
   content: {
-    type: string,
+    type: String,
     unique: true,
   },
   date: {
-    type: string,
+    type: String,
     unique: true,
   },
   iso2code: {
