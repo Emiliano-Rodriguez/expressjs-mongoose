@@ -13,6 +13,23 @@ routes.get("/", async (req, res) => {
   }
 });
 
+
+routes.get("/stories", async (req: Request, res: Response) => {
+  try {
+    const stories = await StoriesModel.find();
+    const storiesData = stories.map(story => {
+      return {
+        title: story.title,
+        content: story.content
+      }
+    });
+    res.json(storiesData);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+
 routes.post("/", async (req, res) => {
   try {
     const stories: IStories = req.body;
