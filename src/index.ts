@@ -17,7 +17,7 @@ app.get("/", async (req, res) => {
   res.json({ message: "Please visit /countries to view all the countries" });
 });
 
-app.get("/stories", async (req: Request, res: Response) => {
+app.get("/stories", async (req, res) => {
 
   try {
     const stories = await StoriesModel.find();
