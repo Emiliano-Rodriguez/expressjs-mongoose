@@ -1,31 +1,33 @@
-import { Router } from "express";
+/mport { Router } from "express";
 import { StoriesModel, IStories } from "../models/stories";
 
 const routes = Router();
 
 routes.get("/", async (req, res) => {
   try {
-    const countries: IStories[] = await StoriesModel.find().exec();
-    return res.json(countries);
+    const story: IStories[] = await StoriesModel.find().exec();
+    const title = "Stories Section";
+
+    // Build an HTML string with the title and stories
+    const html = `
+      <html>
+        <head>
+          <title>${title}</title>
+        </head>
+        <body>
+          <h1>${title}</h1>
+          <ul>
+            ${story.title}<p>${story.content}</p>
+          </ul>
+        </body>
+      </html>
+    `;
+
+    res.send(html);
+    return res.json(stories);
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: "Sorry, something went wrong :/" });
-  }
-});
-
-
-routes.get("/stories", async (req: Request, res: Response) => {
-  try {
-    const stories = await StoriesModel.find();
-    const storiesData = stories.map(story => {
-      return {
-        title: story.title,
-        content: story.content
-      }
-    });
-    res.json(storiesData);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
   }
 });
 
