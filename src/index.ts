@@ -2,7 +2,6 @@ import "./lib/db";
 import express from "express";
 import countryRoutes from "./routes/country";
 import storiesRoutes from "./routes/stories";
-import { StoriesModel } from "../models/stories";
 
 
 const app = express();
@@ -21,7 +20,7 @@ app.get("/", async (req, res) => {
 app.get("/stories", async (req, res) => {
 
   try {
-    const stories = await StoriesModel.find();
+    const stories = await StoriesRoutes.find();
     const storiesData = stories.map(story => {
       return {
         title: story.title,
