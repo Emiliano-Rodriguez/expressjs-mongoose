@@ -24,7 +24,7 @@ routes.get("/", async (req, res) => {
     `;
 
     res.send(html);
-    return res.json(stories);
+    return res.json(story);
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: "Sorry, something went wrong :/" });
