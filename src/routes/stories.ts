@@ -6,6 +6,15 @@ const routes = Router();
 routes.get("/", async (req, res) => {
   try {
     const story: IStories[] = await StoriesModel.find().exec();
+    // Build an array of objects containing the title and content of each story
+    const storyData = story.map((storyObj) => {
+    return {
+      title: storyObj.title,
+      content: storyObj.content,
+    };
+  });
+
+
     const title = "Stories Section";
 
     // Build an HTML string with the title and stories
@@ -17,7 +26,7 @@ routes.get("/", async (req, res) => {
         <body>
           <h1>${title}</h1>
           <ul>
-            ${story.title}<p>${story.content}</p>
+        ${storyData.map((storyObj) => `<li>${storyObj.title}<p>${storyObj.content}</p></li>`).join("")}
           </ul>
         </body>
       </html>
