@@ -18,13 +18,13 @@ routes.post("/", async (req, res) => {
     const stories: IStories = req.body;
 
     const storiesExists = await StoriesModel.findOne({
-      name: stories.name,
+      name: stories.date,
     }).exec();
 
     if (storiesExists) {
       return res
         .status(409)
-        .json({ error: "There is already another stories with this name" });
+        .json({ error: "There is already another stories with this date" });
     }
 
     const newStory = await StoriesModel.create(stories);
