@@ -1,13 +1,23 @@
 import { model, Schema, Document } from "mongoose";
 
 interface IStories extends Document {
-  name: string;
+  title: string;
+  content: string;
+  date: string;
   iso2code: string;
 }
 
 const StoriesSchema = new Schema({
-  name: {
-    type: String,
+  title: {
+    type: string,
+    unique: true,
+  },
+  content: {
+    type: string,
+    unique: true,
+  },
+  date: {
+    type: string,
     unique: true,
   },
   iso2code: {
