@@ -2,6 +2,7 @@ import "./lib/db";
 import express from "express";
 import countryRoutes from "./routes/country";
 import storiesRoutes from "./routes/stories";
+import { StoriesModel } from "../models/stories";
 
 
 const app = express();
