@@ -1,4 +1,4 @@
-/mport { Router } from "express";
+import { Router } from "express";
 import { StoriesModel, IStories } from "../models/stories";
 
 const routes = Router();
