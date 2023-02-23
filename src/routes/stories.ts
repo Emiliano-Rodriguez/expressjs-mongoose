@@ -144,12 +144,6 @@ dateDiv.style.fontSize = '2em';
 
 
 
-topDiv.innerHTML = story.title;
-contentDiv.innerHTML = story.body;
-imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
-
-
-
 var rightButtonClicked = function() {
   currentDate = new Date(currentDate);
   currentDate.setDate(currentDate.getDate());
