@@ -147,6 +147,12 @@ var rightButtonClicked = function() {
   currentDate = new Date(currentDate);
   currentDate.setDate(currentDate.getDate() +1);
   currentDate = currentDate.toISOString().slice(0, 10);
+    
+   topDiv.innerHTML = story.title;
+   contentDiv.innerHTML = story.body;
+   imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
+
+
   if (currentDate > new Date().toISOString().slice(0, 10)) {
     topDiv.innerHTML = titleEmpty;
     contentDiv.innerHTML = emptyBody;
