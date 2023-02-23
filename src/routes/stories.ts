@@ -15,18 +15,20 @@ routes.get("/", async (req, res) => {
   });
 
 
-    const title = "Stories Section";
+//    const title = "Stories Section";
+   const emptyBodyTitle = storyData.length > 0 ? storyData[0].title : "No stories available";
+   const emptyBodyContent = storyData.length > 0 ? storyData[0].body : "No stories available";
+
 
     // Build an HTML string with the title and stories
     const html = `
-
 
 <html>
     <head>
         <script>
         document.addEventListener("DOMContentLoaded", function() {
-var emptyBody = 'If answers it is you seek, you will have to come back tomorrow';
-var titleEmpty = 'This story is yet to be foretold';
+var emptyBody = '${emptyBodyTitle}';
+var titleEmpty = '${emptyBodyContent}';
 
 var leftButton = document.createElement('button');
 leftButton.innerHTML = 'Left';
@@ -130,12 +132,22 @@ document.body.appendChild(contentDiv);
 
 contentDiv.style.borderRadius = '2%';
 
-var currentDate = new Date().toISOString().slice(0, 10);
+topDiv.innerHTML = titleEmpty;
+contentDiv.innerHTML = emptyBody;
+
+
+
+
+const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+var currentDate = new Date().toLocaleString('en-US', { timeZone: timezone }).split(',')[0].split('/');
+currentDate = currentDate[2] + '-' + currentDate[0].padStart(2, '0') + '-' + currentDate[1].padStart(2, '0');
+
+
 
 var dateDiv = document.createElement('div');
 dateDiv.style.position = 'absolute';
 dateDiv.style.right = '8%';
-dateDiv.style.top = '8%';
+topDiv.innerHTML = titleEmpty;dateDiv.style.top = '8%';
 dateDiv.style.color = 'white';
 dateDiv.innerHTML = currentDate;
 document.body.appendChild(dateDiv);
@@ -143,13 +155,11 @@ document.body.appendChild(dateDiv);
 dateDiv.style.fontSize = '2em';
 
 
-
 var rightButtonClicked = function() {
   currentDate = new Date(currentDate);
   currentDate.setDate(currentDate.getDate() +1);
   currentDate = currentDate.toISOString().slice(0, 10);
-    
-  if (currentDate > new Date().toISOString().slice(0, 10)) {
+  if (currentDate >= new Date().toISOString().slice(0, 10)) {
     topDiv.innerHTML = titleEmpty;
     contentDiv.innerHTML = emptyBody;
   } else {
