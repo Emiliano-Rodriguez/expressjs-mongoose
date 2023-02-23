@@ -143,16 +143,18 @@ document.body.appendChild(dateDiv);
 dateDiv.style.fontSize = '2em';
 
 
+
+topDiv.innerHTML = story.title;
+contentDiv.innerHTML = story.body;
+imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
+
+
+
 var rightButtonClicked = function() {
   currentDate = new Date(currentDate);
-  currentDate.setDate(currentDate.getDate() +1);
+  currentDate.setDate(currentDate.getDate());
   currentDate = currentDate.toISOString().slice(0, 10);
     
-   topDiv.innerHTML = story.title;
-   contentDiv.innerHTML = story.body;
-   imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
-
-
   if (currentDate > new Date().toISOString().slice(0, 10)) {
     topDiv.innerHTML = titleEmpty;
     contentDiv.innerHTML = emptyBody;
