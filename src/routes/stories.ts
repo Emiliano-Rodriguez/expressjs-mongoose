@@ -165,18 +165,21 @@ var rightButtonClicked = function() {
 
 //TESTING
 
-    function getEmptyBodyContent(storyData, targetDate) {
-      // Convert the targetDate string to a Date object
-      const [month, day, year] = targetDate.split('/');
-      const targetDateObj = new Date('${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}');
+function getEmptyBodyContent(storyData: StoryData[], targetDate: string): string {
+  // Convert the targetDate string to a Date object
+  const [month, day, year] = targetDate.split('/');
+  const targetDateObj = new Date(`${year}-${(month as string).padStart(2, "0")}-${(day as string).padStart(2, "0")}`);
 
-      // Search for the story object with the matching date
-      const storyWithTargetDate = storyData.find(storyObj => {
-        const storyDate = new Date(storyObj.date);
-        return storyDate.getTime() === targetDateObj.getTime();
-      });
-      return storyWithTargetDate ? storyWithTargetDate.content : "No stories available";
-    }
+  // Search for the story object with the matching date
+  const storyWithTargetDate = storyData.find(storyObj => {
+    const storyDate = new Date(storyObj.date);
+    return storyDate.getTime() === targetDateObj.getTime();
+  });
+
+  // If a matching story object was found, return its content
+  // Otherwise, return "No stories available"
+  return storyWithTargetDate ? storyWithTargetDate.content : "No stories available";
+}
     contentDiv.innerHTML = getEmptyBodyContent(storyData, currentDate);  //testing
 //TESTING
     imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
