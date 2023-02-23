@@ -180,6 +180,7 @@ function getEmptyBodyContent(storyData: StoryData[], targetDate: string): string
   // Otherwise, return "No stories available"
   return storyWithTargetDate ? storyWithTargetDate.content : "No stories available";
 }
+
     contentDiv.innerHTML = getEmptyBodyContent(storyData, currentDate);  //testing
 //TESTING
     imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
