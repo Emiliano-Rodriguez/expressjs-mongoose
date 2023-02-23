@@ -146,7 +146,7 @@ dateDiv.style.fontSize = '2em';
 
 var rightButtonClicked = function() {
   currentDate = new Date(currentDate);
-  currentDate.setDate(currentDate.getDate());
+  currentDate.setDate(currentDate.getDate() +1);
   currentDate = currentDate.toISOString().slice(0, 10);
     
   if (currentDate > new Date().toISOString().slice(0, 10)) {
