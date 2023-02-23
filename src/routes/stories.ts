@@ -142,6 +142,28 @@ const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 var currentDate = new Date().toLocaleString('en-US', { timeZone: timezone }).split(',')[0].split('/');
 currentDate = currentDate[2] + '-' + currentDate[0].padStart(2, '0') + '-' + currentDate[1].padStart(2, '0');
 
+//-----TESTING-----
+function getEmptyBodyContent(storyData, targetDate) {
+  // Convert the targetDate string to a Date object
+  const [month, day, year] = targetDate.split('/');
+  const targetDateObj = new Date(`${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`);
+
+  // Search for the story object with the matching date
+  const storyWithTargetDate = storyData.find(storyObj => {
+    const storyDate = new Date(storyObj.date);
+    return storyDate.getTime() === targetDateObj.getTime();
+  });
+
+  // If a matching story object was found, return its content
+  // Otherwise, return "No stories available"
+  return storyWithTargetDate ? storyWithTargetDate.content : "No stories available";
+}
+
+
+
+
+
+//----TESTINGDONE----
 
 
 var dateDiv = document.createElement('div');
@@ -164,7 +186,7 @@ var rightButtonClicked = function() {
     contentDiv.innerHTML = 'The narrative is yet to unfold';
   } else {
     topDiv.innerHTML = titles[Math.floor(Math.random() * titles.length)];
-    contentDiv.innerHTML = bodies[Math.floor(Math.random() * bodies.length)];
+    contentDiv.innerHTML = getEmptyBodyContent(storyData, currentDate);  //testing
     imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
   }
   dateDiv.innerHTML = currentDate;
@@ -180,7 +202,7 @@ var leftButtonClicked = function() {
     contentDiv.innerHTML = 'The narrative is yet to unfold';
   } else {
     topDiv.innerHTML = titles[Math.floor(Math.random() * titles.length)];
-    contentDiv.innerHTML = bodies[Math.floor(Math.random() * bodies.length)];
+    contentDiv.innerHTML = getEmptyBodyContent(storyData, currentDate);
     imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
   }
   dateDiv.innerHTML = currentDate;
