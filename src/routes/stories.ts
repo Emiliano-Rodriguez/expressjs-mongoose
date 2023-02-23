@@ -27,8 +27,8 @@ routes.get("/", async (req, res) => {
     <head>
         <script>
         document.addEventListener("DOMContentLoaded", function() {
-var emptyBody = '${emptyBodyTitle}';
-var titleEmpty = '${emptyBodyContent}';
+var titleEmpty = '${emptyBodyTitle}';
+var emptyBody = '${emptyBodyContent}';
 
 var leftButton = document.createElement('button');
 leftButton.innerHTML = 'Left';
@@ -160,8 +160,8 @@ var rightButtonClicked = function() {
   currentDate.setDate(currentDate.getDate() +1);
   currentDate = currentDate.toISOString().slice(0, 10);
   if (currentDate >= new Date().toISOString().slice(0, 10)) {
-    topDiv.innerHTML = titleEmpty;
-    contentDiv.innerHTML = emptyBody;
+    topDiv.innerHTML = 'This tale is yet to be be told';
+    contentDiv.innerHTML = 'The narrative is yet to unfold';
   } else {
     topDiv.innerHTML = titles[Math.floor(Math.random() * titles.length)];
     contentDiv.innerHTML = bodies[Math.floor(Math.random() * bodies.length)];
@@ -176,8 +176,8 @@ var leftButtonClicked = function() {
   currentDate.setDate(currentDate.getDate() -1);
   currentDate = currentDate.toISOString().slice(0, 10);
   if (currentDate > new Date().toISOString().slice(0, 10)) {
-    topDiv.innerHTML = titleEmpty;
-    contentDiv.innerHTML = emptyBody;
+    topDiv.innerHTML = 'This tale is yet to be be told';
+    contentDiv.innerHTML = 'The narrative is yet to unfold';
   } else {
     topDiv.innerHTML = titles[Math.floor(Math.random() * titles.length)];
     contentDiv.innerHTML = bodies[Math.floor(Math.random() * bodies.length)];
