@@ -17,7 +17,7 @@ routes.get("/", async (req, res) => {
 
 //    const title = "Stories Section";
    const emptyBodyTitle = storyData.length > 0 ? storyData[0].title : "No stories available";
-   const emptyBodyContent = storyData.length > 0 ? storyData[0].body : "No stories available";
+   const emptyBodyContent = storyData.length > 0 ? storyData[0].content : "No stories available";
 
 
     // Build an HTML string with the title and stories
