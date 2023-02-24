@@ -161,13 +161,14 @@ var rightButtonClicked = function() {
     contentDiv.innerHTML = 'The narrative is yet to unfold';
   } else {
     topDiv.innerHTML = titles[Math.floor(Math.random() * titles.length)];
-
+    contentDiv.innerHTML = getEmptyBodyContent(storyData, currentDate);
+/**
 //TESTING
 
 function getEmptyBodyContent(storyData: StoryData[], targetDate: string): string {
   // Convert the targetDate string to a Date object
   const [month, day, year] = targetDate.split('/');
-  const targetDateObj = '2023-02-13';
+  const targetDateObj = '2023-02-18';
 
 
   // Search for the story object with the matching date
@@ -183,6 +184,7 @@ function getEmptyBodyContent(storyData: StoryData[], targetDate: string): string
 
     contentDiv.innerHTML = getEmptyBodyContent(storyData, currentDate);  //testing
 //TESTING
+*/
     imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
     }
 
