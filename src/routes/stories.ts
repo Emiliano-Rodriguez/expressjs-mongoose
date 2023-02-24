@@ -63,7 +63,6 @@ setBackground();
 leftButton.addEventListener('click', setBackground);
 rightButton.addEventListener('click', setBackground);
 
-
 var images = [
   'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg',
   'https://media.moddb.com/images/members/5/4550/4549205/duck.jpg',
