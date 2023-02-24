@@ -167,7 +167,7 @@ var rightButtonClicked = function() {
 function getEmptyBodyContent(storyData: StoryData[], targetDate: string): string {
   // Convert the targetDate string to a Date object
   const [month, day, year] = targetDate.split('/');
-  const targetDateObj = new Date(`${year}-${String(Number(month)).padStart(2, "0")}-${String(Number(day)).padStart(2, "0")}`);
+  const targetDateObj = '2023-02-13'//new Date(`${year}-${String(Number(month)).padStart(2, "0")}-${String(Number(day)).padStart(2, "0")}`);
 
 
   // Search for the story object with the matching date
