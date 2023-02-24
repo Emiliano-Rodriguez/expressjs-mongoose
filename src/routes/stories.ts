@@ -162,29 +162,6 @@ var rightButtonClicked = function() {
   } else {
     topDiv.innerHTML = titles[Math.floor(Math.random() * titles.length)];
     contentDiv.innerHTML = getEmptyBodyContent(storyData, currentDate);
-/**
-//TESTING
-
-function getEmptyBodyContent(storyData: StoryData[], targetDate: string): string {
-  // Convert the targetDate string to a Date object
-  const [month, day, year] = targetDate.split('/');
-  const targetDateObj = '2023-02-18';
-
-
-  // Search for the story object with the matching date
-  const storyWithTargetDate = storyData.find(storyObj => {
-    const storyDate = new Date(storyObj.date);
-    return storyDate.getTime() === targetDateObj.getTime();
-  });
-
-  // If a matching story object was found, return its content
-  // Otherwise, return "No stories available"
-  return storyWithTargetDate ? storyWithTargetDate.content : "No stories available";
-}
-
-    contentDiv.innerHTML = getEmptyBodyContent(storyData, currentDate);  //testing
-//TESTING
-*/
     imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
     }
 
