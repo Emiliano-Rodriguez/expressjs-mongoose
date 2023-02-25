@@ -17,10 +17,10 @@ routes.get("/", async (req, res) => {
 
 
   function getCurrentDate() {
-    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const currentDateArr = new Date().toLocaleString('en-US', { timeZone: timezone }).split(',')[0].split('/');
-    const currentDate = currentDateArr[2] + '-' + currentDateArr[0].padStart(2, '0') + '-' + currentDateArr[1].padStart(2, '0');
-    return currentDate;
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const currentDayArr = new Date().toLocaleString('en-US', { timeZone: tz }).split(',')[0].split('/');
+    const currentDay = currentDayArr[2] + '-' + currentDayArr[0].padStart(2, '0') + '-' + currentDayArr[1].padStart(2, '0');
+    return currentDay;
   }
   
 
