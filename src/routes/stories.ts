@@ -16,16 +16,7 @@ routes.get("/", async (req, res) => {
   });
 
 
-  function getCurrentDate() {
-    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const currentDayArr = new Date().toLocaleString('en-US', { timeZone: tz }).split(',')[0].split('/');
-    const currentDay = currentDayArr[2] + '-' + currentDayArr[0].padStart(2, '0') + '-' + currentDayArr[1].padStart(2, '0');
-    return currentDay;
-  }
-  
-
-  
-  const dateToFind = getCurrentDate(); // the date string to find in storyData
+  const dateToFind = '2023-02-24'; // the date string to find in storyData
   const foundStory = storyData.find((story) => story.date === dateToFind);
   const emptyBodyTitle = "Title not found";
   const emptyBodyContent = "Content not found";
