@@ -128,6 +128,9 @@ contentDiv.style.borderRadius = '2%';
 topDiv.innerHTML = titleEmpty;
 contentDiv.innerHTML = emptyBody;
 
+const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+var currentDate = new Date().toLocaleString('en-US', { timeZone: timezone }).split(',')[0].split('/');
+currentDate = currentDate[2] + '-' + currentDate[0].padStart(2, '0') + '-' + currentDate[1].padStart(2, '0');
 
 
 
@@ -137,7 +140,7 @@ dateDiv.style.right = '8%';
 topDiv.innerHTML = titleEmpty;
 dateDiv.style.top = '8%';
 dateDiv.style.color = 'white';
-dateDiv.innerHTML = getCurrentDate();
+dateDiv.innerHTML = getCurrentDate;
 document.body.appendChild(dateDiv);
 
 dateDiv.style.fontSize = '2em';
