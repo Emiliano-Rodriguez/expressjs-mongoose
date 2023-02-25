@@ -11,14 +11,26 @@ routes.get("/", async (req, res) => {
     return {
       title: storyObj.title,
       content: storyObj.content,
+      date: storyObj.date,
     };
   });
 
 
-//    const title = "Stories Section";
-   const emptyBodyTitle = storyData.length > 0 ? storyData[0].title : "No stories available";
-   const emptyBodyContent = storyData.length > 0 ? storyData[0].content : "No stories available";
+  function getCurrentDate() {
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const currentDateArr = new Date().toLocaleString('en-US', { timeZone: timezone }).split(',')[0].split('/');
+    const currentDate = currentDateArr[2] + '-' + currentDateArr[0].padStart(2, '0') + '-' + currentDateArr[1].padStart(2, '0');
+    return currentDate;
+  }
+  
 
+  
+  const dateToFind = getCurrentDate(); // the date string to find in storyData
+  const foundStory = storyData.find((story) => story.date === dateToFind);
+  
+  const title = foundStory ? foundStory.title : emptyBodyTitle;
+  const content = foundStory ? foundStory.content : emptyBodyContent;
+  
 
     // Build an HTML string with the title and stories
     const html = `
@@ -27,8 +39,8 @@ routes.get("/", async (req, res) => {
     <head>
         <script>
         document.addEventListener("DOMContentLoaded", function() {
-var titleEmpty = '${emptyBodyTitle}';
-var emptyBody = '${emptyBodyContent}';
+var titleEmpty = '${title}';
+var emptyBody = '${content}';
 
 var leftButton = document.createElement('button');
 leftButton.innerHTML = 'Left';
@@ -126,17 +138,13 @@ contentDiv.innerHTML = emptyBody;
 
 
 
-const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-var currentDate = new Date().toLocaleString('en-US', { timeZone: timezone }).split(',')[0].split('/');
-currentDate = currentDate[2] + '-' + currentDate[0].padStart(2, '0') + '-' + currentDate[1].padStart(2, '0');
-
 var dateDiv = document.createElement('div');
 dateDiv.style.position = 'absolute';
 dateDiv.style.right = '8%';
 topDiv.innerHTML = titleEmpty;
 dateDiv.style.top = '8%';
 dateDiv.style.color = 'white';
-dateDiv.innerHTML = currentDate;
+dateDiv.innerHTML = getCurrentDate();
 document.body.appendChild(dateDiv);
 
 dateDiv.style.fontSize = '2em';
