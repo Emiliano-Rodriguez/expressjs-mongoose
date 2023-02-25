@@ -150,12 +150,10 @@ var rightButtonClicked = function() {
     topDiv.innerHTML = 'This tale is yet to be be told';
     contentDiv.innerHTML = 'The narrative is yet to unfold';
   } else {
-    topDiv.innerHTML = titles[Math.floor(Math.random() * titles.length)];
-    contentDiv.innerHTML = titleEmpty
+    topDiv.innerHTML = titleEmpty;
+    contentDiv.innerHTML = titleEmpty;
     imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
     }
-
-  }
   dateDiv.innerHTML = currentDate;
 };
 rightButton.addEventListener('click', rightButtonClicked);
