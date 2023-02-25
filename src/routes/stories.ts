@@ -140,7 +140,7 @@ dateDiv.style.right = '8%';
 topDiv.innerHTML = titleEmpty;
 dateDiv.style.top = '8%';
 dateDiv.style.color = 'white';
-dateDiv.innerHTML = getCurrentDate;
+dateDiv.innerHTML = currentDate;
 document.body.appendChild(dateDiv);
 
 dateDiv.style.fontSize = '2em';
