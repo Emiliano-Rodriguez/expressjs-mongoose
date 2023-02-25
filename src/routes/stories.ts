@@ -166,7 +166,7 @@ var leftButtonClicked = function() {
   currentDate = new Date(currentDate);
   currentDate.setDate(currentDate.getDate() -1);
   currentDate = currentDate.toISOString().slice(0, 10);
-  if (currentDate > new Date().toISOString().slice(0, 10)) {
+  if (currentDate >= new Date().toISOString().slice(0, 10)) {
     topDiv.innerHTML = 'This tale is yet to be be told';
     contentDiv.innerHTML = 'The narrative is yet to unfold';
   } else {
