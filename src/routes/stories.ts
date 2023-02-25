@@ -27,7 +27,9 @@ routes.get("/", async (req, res) => {
   
   const dateToFind = getCurrentDate(); // the date string to find in storyData
   const foundStory = storyData.find((story) => story.date === dateToFind);
-  
+  const emptyBodyTitle = "Title not found";
+  const emptyBodyContent = "Content not found";
+
   const title = foundStory ? foundStory.title : emptyBodyTitle;
   const content = foundStory ? foundStory.content : emptyBodyContent;
   
