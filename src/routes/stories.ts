@@ -106,17 +106,6 @@ document.body.appendChild(topDiv);
 
 topDiv.style.borderRadius = '5%';
 
-var titles = [
-  'Alas, a good tale to be told',
-  'Hooray! we have found another one of us!',
-  'Wait, are you serious'
-];
-
-var bodies = [
-  'There was once a man, who lived in a shoe. This man was from Paru and his name was nothing less than Aruu',
-  'It has been centuries since we began our search but its finally here',
-  'No way will smith wins an award tonight'
-];
 
 var contentDiv = document.createElement('div');
 contentDiv.style.position = 'absolute';
@@ -144,7 +133,8 @@ currentDate = currentDate[2] + '-' + currentDate[0].padStart(2, '0') + '-' + cur
 var dateDiv = document.createElement('div');
 dateDiv.style.position = 'absolute';
 dateDiv.style.right = '8%';
-topDiv.innerHTML = titleEmpty;dateDiv.style.top = '8%';
+topDiv.innerHTML = titleEmpty;
+dateDiv.style.top = '8%';
 dateDiv.style.color = 'white';
 dateDiv.innerHTML = currentDate;
 document.body.appendChild(dateDiv);
@@ -161,7 +151,7 @@ var rightButtonClicked = function() {
     contentDiv.innerHTML = 'The narrative is yet to unfold';
   } else {
     topDiv.innerHTML = titles[Math.floor(Math.random() * titles.length)];
-    contentDiv.innerHTML = getEmptyBodyContent(storyData, currentDate);
+    contentDiv.innerHTML = titleEmpty
     imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
     }
 
@@ -179,7 +169,7 @@ var leftButtonClicked = function() {
     contentDiv.innerHTML = 'The narrative is yet to unfold';
   } else {
     topDiv.innerHTML = titles[Math.floor(Math.random() * titles.length)];
-    contentDiv.innerHTML = getEmptyBodyContent(storyData, currentDate); //testing
+    contentDiv.innerHTML = titleEmpty
     imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
   }
   dateDiv.innerHTML = currentDate;
