@@ -156,7 +156,7 @@ var rightButtonClicked = function() {
     contentDiv.innerHTML = 'The narrative is yet to unfold';
   } else {
     const dateToFind = currentDate; // use the currentDate to find the story for the date
-    const foundStory = '${storyData.find((story) => story.date === dateToFind)}';
+    const foundStory = ${storyData.find((story) => story.date === dateToFind)};
     const emptyBodyTitle = "Title not found";
     const emptyBodyContent = "Content not found";
 
@@ -167,6 +167,7 @@ var rightButtonClicked = function() {
     contentDiv.innerHTML = content;
     imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
   }
+  console.log(storyData);
   dateDiv.innerHTML = currentDate;
 };
 rightButton.addEventListener('click', rightButtonClicked);
@@ -181,7 +182,7 @@ var leftButtonClicked = function() {
     contentDiv.innerHTML = 'The narrative is yet to unfold';
   } else {
     const dateToFind = currentDate; // use the currentDate to find the story for the date
-    const foundStory = '${storyData.find((story) => story.date === dateToFind)}';
+    const foundStory = ${storyData.find((story) => story.date === dateToFind)};
     const emptyBodyTitle = "Title not found";
     const emptyBodyContent = "Content not found";
 
@@ -192,6 +193,7 @@ var leftButtonClicked = function() {
     contentDiv.innerHTML = content;
     imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
   }
+  console.log(storyData);
   dateDiv.innerHTML = currentDate;
 };
 leftButton.addEventListener('click', leftButtonClicked);
