@@ -17,12 +17,28 @@ routes.get("/", async (req, res) => {
     };
   });
 
+  function getStoryByDate(storyData, dateToFind) {
+    const foundStory = storyData.find((story) => story.date === dateToFind);
+    const emptyBodyTitle = "This story is currently being written";
+    const emptyBodyContent = "Come back in a few, it might be fortold soon";
+    const title = foundStory ? foundStory.title : emptyBodyTitle;
+    const content = foundStory ? foundStory.content : emptyBodyContent;
+    return { title, content };
+  }
+  
+
+
+
+
+
+
 
 
   const dateToFind = '2023-02-26'; // the date string to find in storyData
-  const foundStory = storyData.find((story) => story.date === dateToFind);
-  const emptyBodyTitle = "This story is currently being written";
-  const emptyBodyContent = "Come back in a few, it might be fortold soon";
+  const foundStory = getStoryByDate(storyData,dateToFind);
+  //const foundStory = storyData.find((story) => story.date === dateToFind);
+  //const emptyBodyTitle = "This story is currently being written";
+  //const emptyBodyContent = "Come back in a few, it might be fortold soon";
 
   console.log(storyData);
 
