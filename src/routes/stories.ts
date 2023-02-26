@@ -16,10 +16,15 @@ routes.get("/", async (req, res) => {
   });
 
 
-  const dateToFind = '2023-02-24'; // the date string to find in storyData
+
+const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+var currentDate = new Date().toLocaleString('en-US', { timeZone: timezone }).split(',')[0].split('/');
+currentDate = currentDate[2] + '-' + currentDate[0].padStart(2, '0') + '-' + currentDate[1].padStart(2, '0');
+
+  const dateToFind = currentDate; // the date string to find in storyData
   const foundStory = storyData.find((story) => story.date === dateToFind);
-  const emptyBodyTitle = "Title not found";
-  const emptyBodyContent = "Content not found";
+  const emptyBodyTitle = "This story is currently being written";
+  const emptyBodyContent = "Come back in a few, it might be fortold soon";
 
   const title = foundStory ? foundStory.title : emptyBodyTitle;
   const content = foundStory ? foundStory.content : emptyBodyContent;
@@ -155,7 +160,7 @@ var rightButtonClicked = function() {
     contentDiv.innerHTML = 'The narrative is yet to unfold';
   } else {
     const dateToFind = currentDate; // use the currentDate to find the story for the date
-    const foundStory = storyData.find((story) => story.date === dateToFind);
+    const foundStory = ${storyData.find((story) => story.date === dateToFind)};
     const emptyBodyTitle = "Title not found";
     const emptyBodyContent = "Content not found";
 
@@ -180,7 +185,7 @@ var leftButtonClicked = function() {
     contentDiv.innerHTML = 'The narrative is yet to unfold';
   } else {
     const dateToFind = currentDate; // use the currentDate to find the story for the date
-    const foundStory = storyData.find((story) => story.date === dateToFind);
+    const foundStory = ${storyData.find((story) => story.date === dateToFind)};
     const emptyBodyTitle = "Title not found";
     const emptyBodyContent = "Content not found";
 
