@@ -170,13 +170,22 @@ var leftButtonClicked = function() {
     topDiv.innerHTML = 'This tale is yet to be be told';
     contentDiv.innerHTML = 'The narrative is yet to unfold';
   } else {
-    topDiv.innerHTML = titleEmpty;
-    contentDiv.innerHTML = emptyBody;
+    const dateToFind = currentDate; // use the currentDate to find the story for the date
+    const foundStory = storyData.find((story) => story.date === dateToFind);
+    const emptyBodyTitle = "Title not found";
+    const emptyBodyContent = "Content not found";
+
+    const title = foundStory ? foundStory.title : emptyBodyTitle;
+    const content = foundStory ? foundStory.content : emptyBodyContent;
+
+    topDiv.innerHTML = title;
+    contentDiv.innerHTML = content;
     imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
   }
   dateDiv.innerHTML = currentDate;
 };
 leftButton.addEventListener('click', leftButtonClicked);
+
 
 topDiv.style.textAlign = 'center';
 topDiv.style.fontSize = '2em';
