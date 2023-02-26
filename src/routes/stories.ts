@@ -146,34 +146,64 @@ document.body.appendChild(dateDiv);
 dateDiv.style.fontSize = '2em';
 
 
-var rightButtonClicked = function() {
+const rightButtonClicked = function () {
   currentDate = new Date(currentDate);
-  currentDate.setDate(currentDate.getDate() +1);
+  currentDate.setDate(currentDate.getDate() + 1);
   currentDate = currentDate.toISOString().slice(0, 10);
-  if (currentDate >= new Date().toISOString().slice(0, 10)) {
-    topDiv.innerHTML = 'This tale is yet to be be told';
-    contentDiv.innerHTML = 'The narrative is yet to unfold';
+
+  const foundStory = storyData.find((story) => story.date === currentDate);
+
+  if (foundStory) {
+    title = foundStory.title;
+    content = foundStory.content;
+    imageDiv.style.backgroundImage =
+      "url(" + images[Math.floor(Math.random() * images.length)] + ")";
   } else {
-    topDiv.innerHTML = titleEmpty;
-    contentDiv.innerHTML = emptyBody;
-    imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
-    }
+    title = emptyBodyTitle;
+    content = emptyBodyContent;
+    imageDiv.style.backgroundImage = "";
+  }
+
+  if (currentDate >= new Date().toISOString().slice(0, 10)) {
+    title = "This tale is yet to be be told";
+    content = "The narrative is yet to unfold";
+    imageDiv.style.backgroundImage = "";
+  }
+
+  topDiv.innerHTML = title;
+  contentDiv.innerHTML = content;
   dateDiv.innerHTML = currentDate;
 };
 rightButton.addEventListener('click', rightButtonClicked);
 
-var leftButtonClicked = function() {
+
+
+const leftButtonClicked = function () {
   currentDate = new Date(currentDate);
-  currentDate.setDate(currentDate.getDate() -1);
+  currentDate.setDate(currentDate.getDate() - 1);
   currentDate = currentDate.toISOString().slice(0, 10);
-  if (currentDate >= new Date().toISOString().slice(0, 10)) {
-    topDiv.innerHTML = 'This tale is yet to be be told';
-    contentDiv.innerHTML = 'The narrative is yet to unfold';
+
+  const foundStory = storyData.find((story) => story.date === currentDate);
+
+  if (foundStory) {
+    title = foundStory.title;
+    content = foundStory.content;
+    imageDiv.style.backgroundImage =
+      "url(" + images[Math.floor(Math.random() * images.length)] + ")";
   } else {
-    topDiv.innerHTML = titleEmpty;
-    contentDiv.innerHTML = emptyBody;
-    imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
+    title = emptyBodyTitle;
+    content = emptyBodyContent;
+    imageDiv.style.backgroundImage = "";
   }
+
+  if (currentDate >= new Date().toISOString().slice(0, 10)) {
+    title = "This tale is yet to be be told";
+    content = "The narrative is yet to unfold";
+    imageDiv.style.backgroundImage = "";
+  }
+
+  topDiv.innerHTML = title;
+  contentDiv.innerHTML = content;
   dateDiv.innerHTML = currentDate;
 };
 leftButton.addEventListener('click', leftButtonClicked);
