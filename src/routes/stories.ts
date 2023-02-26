@@ -17,7 +17,7 @@ routes.get("/", async (req, res) => {
 
 
 
-  const dateToFind = '2023-02-18'; // the date string to find in storyData
+  const dateToFind = '2023-02-24'; // the date string to find in storyData
   const foundStory = storyData.find((story) => story.date === dateToFind);
   const emptyBodyTitle = "This story is currently being written";
   const emptyBodyContent = "Come back in a few, it might be fortold soon";
