@@ -146,64 +146,34 @@ document.body.appendChild(dateDiv);
 dateDiv.style.fontSize = '2em';
 
 
-const rightButtonClicked = function () {
+var rightButtonClicked = function() {
   currentDate = new Date(currentDate);
-  currentDate.setDate(currentDate.getDate() + 1);
+  currentDate.setDate(currentDate.getDate() +1);
   currentDate = currentDate.toISOString().slice(0, 10);
-
-  const foundStory = storyData.find((story) => story.date === currentDate);
-
-  if (foundStory) {
-    title = foundStory.title;
-    content = foundStory.content;
-    imageDiv.style.backgroundImage =
-      "url(" + images[Math.floor(Math.random() * images.length)] + ")";
-  } else {
-    title = emptyBodyTitle;
-    content = emptyBodyContent;
-    imageDiv.style.backgroundImage = "";
-  }
-
   if (currentDate >= new Date().toISOString().slice(0, 10)) {
-    title = "This tale is yet to be be told";
-    content = "The narrative is yet to unfold";
-    imageDiv.style.backgroundImage = "";
-  }
-
-  topDiv.innerHTML = title;
-  contentDiv.innerHTML = content;
+    topDiv.innerHTML = 'This tale is yet to be be told';
+    contentDiv.innerHTML = 'The narrative is yet to unfold';
+  } else {
+    topDiv.innerHTML = titleEmpty;
+    contentDiv.innerHTML = emptyBody;
+    imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
+    }
   dateDiv.innerHTML = currentDate;
 };
 rightButton.addEventListener('click', rightButtonClicked);
 
-
-
-const leftButtonClicked = function () {
+var leftButtonClicked = function() {
   currentDate = new Date(currentDate);
-  currentDate.setDate(currentDate.getDate() - 1);
+  currentDate.setDate(currentDate.getDate() -1);
   currentDate = currentDate.toISOString().slice(0, 10);
-
-  const foundStory = storyData.find((story) => story.date === currentDate);
-
-  if (foundStory) {
-    title = foundStory.title;
-    content = foundStory.content;
-    imageDiv.style.backgroundImage =
-      "url(" + images[Math.floor(Math.random() * images.length)] + ")";
-  } else {
-    title = emptyBodyTitle;
-    content = emptyBodyContent;
-    imageDiv.style.backgroundImage = "";
-  }
-
   if (currentDate >= new Date().toISOString().slice(0, 10)) {
-    title = "This tale is yet to be be told";
-    content = "The narrative is yet to unfold";
-    imageDiv.style.backgroundImage = "";
+    topDiv.innerHTML = 'This tale is yet to be be told';
+    contentDiv.innerHTML = 'The narrative is yet to unfold';
+  } else {
+    topDiv.innerHTML = titleEmpty;
+    contentDiv.innerHTML = emptyBody;
+    imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
   }
-
-  topDiv.innerHTML = title;
-  contentDiv.innerHTML = content;
   dateDiv.innerHTML = currentDate;
 };
 leftButton.addEventListener('click', leftButtonClicked);
