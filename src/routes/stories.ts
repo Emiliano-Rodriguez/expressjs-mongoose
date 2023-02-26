@@ -22,30 +22,36 @@ routes.get("/", async (req, res) => {
   const emptyBodyTitle = "This story is currently being written";
   const emptyBodyContent = "Come back in a few, it might be fortold soon";
 
+  console.log(storyData);
+
   const title = foundStory ? foundStory.title : emptyBodyTitle;
   const content = foundStory ? foundStory.content : emptyBodyContent;
   
 
     // Build an HTML string with the title and stories
     const html = `
+
 <html>
     <head>
         <script>
         document.addEventListener("DOMContentLoaded", function() {
 var titleEmpty = '${title}';
 var emptyBody = '${content}';
+
 var leftButton = document.createElement('button');
 leftButton.innerHTML = 'Left';
 leftButton.style.position = 'absolute';
 leftButton.style.left = '0px';
 leftButton.style.top = '0px';
 document.body.appendChild(leftButton);
+
 var rightButton = document.createElement('button');
 rightButton.innerHTML = 'Right';
 rightButton.style.position = 'absolute';
 rightButton.style.right = '0px';
 rightButton.style.top = '0px';
 document.body.appendChild(rightButton);
+
 var centerButtons = function() {
   var windowHeight = window.innerHeight;
   var buttonHeight = leftButton.offsetHeight;
@@ -55,6 +61,7 @@ var centerButtons = function() {
 };
 centerButtons();
 window.addEventListener('resize', centerButtons);
+
 var setBackground = function() {
   var leftColor = 'rgb(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ')';
   var rightColor = 'rgb(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ')';
@@ -63,11 +70,13 @@ var setBackground = function() {
 setBackground();
 leftButton.addEventListener('click', setBackground);
 rightButton.addEventListener('click', setBackground);
+
 var images = [
   'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg',
   'https://media.moddb.com/images/members/5/4550/4549205/duck.jpg',
   'https://media.istockphoto.com/id/173682323/photo/says.jpg?s=612x612&w=0&k=20&c=7jnXQrYzUWNTnLhjPgimxHIbjsaHvZmAMALGVzYNARQ='
 ];
+
 var imageDiv = document.createElement('div');
 imageDiv.style.position = 'absolute';
 imageDiv.style.left = '0px';
@@ -78,6 +87,7 @@ imageDiv.style.backgroundImage = 'url(' + images[0] + ')';
 imageDiv.style.backgroundSize = 'cover';
 imageDiv.style.backgroundPosition = 'center';
 document.body.appendChild(imageDiv);
+
 var centerImage = function() {
   var windowWidth = window.innerWidth;
   var windowHeight = window.innerHeight;
@@ -90,6 +100,7 @@ var centerImage = function() {
 };
 centerImage();
 window.addEventListener('resize', centerImage);
+
 var topDiv = document.createElement('div');
 topDiv.style.position = 'absolute';
 topDiv.style.left = '2%';
@@ -100,7 +111,10 @@ topDiv.style.background = 'transparent';
 topDiv.style.border = '3px solid white';
 topDiv.style.boxShadow = '0 0 10px white';
 document.body.appendChild(topDiv);
+
 topDiv.style.borderRadius = '5%';
+
+
 var contentDiv = document.createElement('div');
 contentDiv.style.position = 'absolute';
 contentDiv.style.left = '17%';
@@ -111,12 +125,18 @@ contentDiv.style.background = 'transparent';
 contentDiv.style.border = '3px solid white';
 contentDiv.style.boxShadow = '0 0 10px white';
 document.body.appendChild(contentDiv);
+
 contentDiv.style.borderRadius = '2%';
+
 topDiv.innerHTML = titleEmpty;
 contentDiv.innerHTML = emptyBody;
+
 const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 var currentDate = new Date().toLocaleString('en-US', { timeZone: timezone }).split(',')[0].split('/');
 currentDate = currentDate[2] + '-' + currentDate[0].padStart(2, '0') + '-' + currentDate[1].padStart(2, '0');
+
+
+
 var dateDiv = document.createElement('div');
 dateDiv.style.position = 'absolute';
 dateDiv.style.right = '8%';
@@ -125,7 +145,10 @@ dateDiv.style.top = '8%';
 dateDiv.style.color = 'white';
 dateDiv.innerHTML = currentDate;
 document.body.appendChild(dateDiv);
+
 dateDiv.style.fontSize = '2em';
+
+
 var rightButtonClicked = function() {
   currentDate = new Date(currentDate);
   currentDate.setDate(currentDate.getDate() +1);
@@ -138,16 +161,20 @@ var rightButtonClicked = function() {
     const foundStory = ${storyData.find((story) => story.date === dateToFind)};
     const emptyBodyTitle = "Title not found";
     const emptyBodyContent = "Content not found";
+    console.log(foundStory);
+
     const title = foundStory ? foundStory.title : emptyBodyTitle;
     const content = foundStory ? foundStory.content : emptyBodyContent;
+
     topDiv.innerHTML = title;
     contentDiv.innerHTML = content;
     imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
   }
-  console.log(foundStory);
   dateDiv.innerHTML = currentDate;
 };
 rightButton.addEventListener('click', rightButtonClicked);
+
+
 var leftButtonClicked = function() {
   currentDate = new Date(currentDate);
   currentDate.setDate(currentDate.getDate() -1);
@@ -160,19 +187,25 @@ var leftButtonClicked = function() {
     const foundStory = ${storyData.find((story) => story.date === dateToFind)};
     const emptyBodyTitle = "Title not found";
     const emptyBodyContent = "Content not found";
+    console.log(foundStory);
+
     const title = foundStory ? foundStory.title : emptyBodyTitle;
     const content = foundStory ? foundStory.content : emptyBodyContent;
+
     topDiv.innerHTML = title;
     contentDiv.innerHTML = content;
     imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
   }
-  console.log(foundStory);
   dateDiv.innerHTML = currentDate;
 };
 leftButton.addEventListener('click', leftButtonClicked);
+
+
 topDiv.style.textAlign = 'center';
 topDiv.style.fontSize = '2em';
+
 contentDiv.style.fontSize = '1.5em';
+
 contentDiv.style.textAlign = 'center';
 });
         </script>
@@ -180,6 +213,9 @@ contentDiv.style.textAlign = 'center';
     <body style="margin: 0;">
     </body>
 </html>
+
+
+
     `;
 
     res.send(html);
@@ -213,3 +249,4 @@ routes.post("/", async (req, res) => {
   }
 });
 
+export default routes;
