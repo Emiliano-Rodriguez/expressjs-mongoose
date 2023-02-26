@@ -22,6 +22,8 @@ routes.get("/", async (req, res) => {
   const emptyBodyTitle = "This story is currently being written";
   const emptyBodyContent = "Come back in a few, it might be fortold soon";
 
+  console.log(storyData);
+
   const title = foundStory ? foundStory.title : emptyBodyTitle;
   const content = foundStory ? foundStory.content : emptyBodyContent;
   
@@ -159,6 +161,7 @@ var rightButtonClicked = function() {
     const foundStory = ${storyData.find((story) => story.date === dateToFind)};
     const emptyBodyTitle = "Title not found";
     const emptyBodyContent = "Content not found";
+    console.log(storyData);
 
     const title = foundStory ? foundStory.title : emptyBodyTitle;
     const content = foundStory ? foundStory.content : emptyBodyContent;
@@ -167,7 +170,6 @@ var rightButtonClicked = function() {
     contentDiv.innerHTML = content;
     imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
   }
-  console.log(storyData);
   dateDiv.innerHTML = currentDate;
 };
 rightButton.addEventListener('click', rightButtonClicked);
@@ -185,6 +187,7 @@ var leftButtonClicked = function() {
     const foundStory = ${storyData.find((story) => story.date === dateToFind)};
     const emptyBodyTitle = "Title not found";
     const emptyBodyContent = "Content not found";
+    console.log(storyData);
 
     const title = foundStory ? foundStory.title : emptyBodyTitle;
     const content = foundStory ? foundStory.content : emptyBodyContent;
@@ -193,7 +196,6 @@ var leftButtonClicked = function() {
     contentDiv.innerHTML = content;
     imageDiv.style.backgroundImage = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
   }
-  console.log(storyData);
   dateDiv.innerHTML = currentDate;
 };
 leftButton.addEventListener('click', leftButtonClicked);
