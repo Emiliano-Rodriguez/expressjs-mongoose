@@ -148,7 +148,7 @@ document.body.appendChild(dateDiv);
 dateDiv.style.fontSize = '2em';
 
 
-var rightButtonClicked = function() {
+var rightButtonClicked = function(storyData) {
   currentDate = new Date(currentDate);
   currentDate.setDate(currentDate.getDate() +1);
   currentDate = currentDate.toISOString().slice(0, 10);
@@ -171,10 +171,12 @@ var rightButtonClicked = function() {
   }
   dateDiv.innerHTML = currentDate;
 };
-rightButton.addEventListener('click', rightButtonClicked);
+rightButton.addEventListener('click', function() {
+  rightButtonClicked(${storyData});
+});
 
 
-var leftButtonClicked = function() {
+var leftButtonClicked = function(storyData) {
   currentDate = new Date(currentDate);
   currentDate.setDate(currentDate.getDate() -1);
   currentDate = currentDate.toISOString().slice(0, 10);
@@ -197,7 +199,9 @@ var leftButtonClicked = function() {
   }
   dateDiv.innerHTML = currentDate;
 };
-leftButton.addEventListener('click', leftButtonClicked);
+leftButton.addEventListener('click', function() {
+  leftButtonClicked(${storyData});
+});
 
 
 topDiv.style.textAlign = 'center';
