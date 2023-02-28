@@ -157,7 +157,7 @@ var rightButtonClicked = function() {
     contentDiv.innerHTML = 'The narrative is yet to unfold';
   } else {
     const dateToFind = currentDate; // use the currentDate to find the story for the date
-    const foundStory = "${storyData.find((story) => story.date === dateToFind)}";
+    const foundStory = storyData.find((story) => story.date === dateToFind);
     const emptyBodyTitle = "Title not found";
     const emptyBodyContent = "Content not found";
     console.log(foundStory);
@@ -183,7 +183,7 @@ var leftButtonClicked = function() {
     contentDiv.innerHTML = 'The narrative is yet to unfold';
   } else {
     const dateToFind = currentDate; // use the currentDate to find the story for the date
-    const foundStory = "${storyData.find((story) => story.date === dateToFind)}";
+    const foundStory = storyData.find((story) => story.date === dateToFind);
     const emptyBodyTitle = "Title not found";
     const emptyBodyContent = "Content not found";
     console.log(foundStory);
